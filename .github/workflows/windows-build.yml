@@ -1,0 +1,20 @@
+name: Windows .NET 8 validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: dotnet restore CalendarNet.sln
+      - run: dotnet build CalendarNet.sln --configuration ${{ matrix.configuration }} --no-restore
+      - run: dotnet run --project tests/CalendarNet.SmokeTests --configuration ${{ matrix.configuration }}

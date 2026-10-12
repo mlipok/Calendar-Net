@@ -1,4 +1,18 @@
 # Calendar .NET
+
+## .NET 8 Windows Forms build
+
+The library and demo now target `net8.0-windows`. Build on Windows with the
+.NET 8 SDK or a newer SDK that supports this target:
+
+```powershell
+dotnet build CalendarNet.sln --configuration Release
+dotnet run --project CalendarNetDemo --configuration Release
+```
+
+See [the migration notes](docs/NET8-MIGRATION.md) for project changes and
+deployment requirements. The original usage article below predates this
+migration; its .NET Framework requirements refer to the original release.
 ## Introduction
 Recently I had a need for a calendar control for an application I was writing. I could not find a good one that suited my needs (one of those needs was to be free or open source). So I decided to write my own control. Calendar .NET is a free calendar control that can render itself as either a month-to-month calendar or as a day-to-day calendar. In addition, events can be added to the calendar. These events can be one time only events or recurring events. The calendar has several built in recurring frequencies, as well as the ability to create your own frequencies. Finally, the calendar also comes preloaded with all Federal Holidays, which can be disabled if you wish.
 ## Using the code
